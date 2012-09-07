@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+    <STYLE TYPE="text/css">
+	.defaultText{font-family:Helvetica,Arial;font-size:10pt;}
+	.tableEvenRow{font-family:Helvetica,Arial;font-size:9pt;background-color:#E6E6E6 }
+	.tableOddRow{font-family:Helvetica,Arial;font-size:9pt;background-color:#FFFFFF }
+    </STYLE>
+   <B><H1> Welcome to the Item Order Page! </H1> </B>
+
+<SCRIPT LANGUAGE="JAVASCRIPT">
+      
+      function validate2(){
+        alert ('here i am'+ document.main.penSelect.checked);
+        if(document.main.penSelect.checked) {
+         alert ('here i am again');
+         alert('you checked' + document.main.);
+        }
+      }
+</SCRIPT>
+
+</HEAD>
+<BODY>
+    <FORM name="main" action="../common/ThankYou.html" method=POST>
+	<table align="center">
+	    <tr class="tableEvenRow">
+		<td></td> <td>Item #</td>
+		<td>Item Name</td>
+		<td>Price</td>
+		<td>Quantity</td>
+	    </tr>
+	    <tr class="tableOddRow">
+		<td><INPUT type="checkbox" name="penSelect"</INPUT></td>
+		<td>101</td>
+		<td>Pen</td>
+		<td>2.00</td>
+		<td><INPUT type="text" name="penQty" size="3" value="0"></INPUT></td>
+	    </tr>
+	    <tr class="tableEvenRow">
+		<td><INPUT type="checkbox" name="pencilSelect"</INPUT></td>
+		<td>102</td>
+		<td>Pencil</td>
+		<td>1.00</td>
+		<td><INPUT type="text" name="pencilQty" size="3" value="0"></INPUT></td>
+	    </tr>
+	    <tr class="tableOddRow">
+		<td><INPUT type="checkbox" name="eraserSelect"</INPUT></td>
+		<td>103</td>
+		<td>Eraser</td>
+		<td>0.50</td>
+		<td><INPUT type="text" name="eraserQty" size="3" value="0"></INPUT></td>
+	    </tr>
+	    <TR CLASS="defaultText">
+		<TD colspan=2><INPUT type="submit" value="Submit" ONCLICK="return validate2()"></INPUT></TD>
+	    </TR>
+	</table>
+    </FORM>
+</BODY>
+</HTML>
+<!-- End: ShowAllItems.html -->
