@@ -1,0 +1,15 @@
+<%@ page import="ComputerScience.Course" %>
+<%
+    Course[] courseArray = new Course[3];
+    courseArray[0] = new Course("CS101", "Introductory Computer Science", 3);
+    courseArray[1] = new Course("CS102", "Data Structure\t", 3);
+    courseArray[2] = new Course("CS103", "C++ Programming\t", 3);
+
+<html>
+<head>
+    <style>
+       .defaultText{font-family:Helvetica,Arial; font-size:9pt;}
+    </style>
+</head>
+</html>
+%>

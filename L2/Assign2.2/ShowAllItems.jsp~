@@ -1,0 +1,62 @@
+<!-- Begin: ShowAllItems.jsp -->
+<HTML>
+<HEAD>
+    <STYLE TYPE="text/css">
+        .defaultText{font-family:Helvetica,Arial;font-size:10pt;}
+        .tableEvenRow{font-family:Helvetica,Arial;font-size:9pt;background-color:#E6E6E6}
+        .tableOddRow{font-family:Helvetica,Arial;font-size:9pt;background-color:#FFFFFF}
+    </STYLE>
+    <SCRIPT LANGUAGE="JAVASCRIPT">
+    function validate()
+    {
+        if (!document.forms.main.penSelect.checked &&
+                !document.forms.main.pencilSelect.checked &&
+                !document.forms.main.eraserSelect.checked)
+        {
+            alert("At least one item must be selected");
+            return false;
+        }
+        return true;
+    }
+    </SCRIPT>
+</HEAD>
+<BODY>
+    <FORM name="main" ACTION="ThankYou.jsp">
+        <table align="center">
+            <tr class="tableEvenRow">
+                <td></td> <td>Item #</td>
+                <td>Item Name</td>
+                <td>Price</td>
+                <td>Quantity</td>
+            </tr>
+            <tr class="tableOddRow">
+                <td><INPUT type="checkbox" name="penSelect"></INPUT></td>
+                <td>101</td>
+                <td>Pen</td>
+                <td>2.00</td>
+                <td><INPUT type="text" name="penQty" size="3" value="1"></INPUT></td>
+            </tr>
+            <tr class="tableEvenRow">
+                <td><INPUT type="checkbox" name="pencilSelect"></INPUT></td>
+                <td>102</td>
+                <td>Pencil</td>
+                <td>1.00</td>
+                <td><INPUT type="text" name="pencilQty" size="3" value="1"></INPUT></td>
+            </tr>
+            <tr class="tableOddRow">
+                <td><INPUT type="checkbox" name="eraserSelect"></INPUT></td>
+                <td>103</td>
+                <td>Eraser</td>
+                <td>0.50</td>
+                <td><INPUT type="text" name="eraserQty" size="3" value="1"></INPUT></td>
+            </tr>
+            <TR CLASS="defaultText">
+                <TD colspan=2>
+                    <INPUT type="submit" value="Submit" ONCLICK="return validate()"></INPUT>
+                </TD>
+            </TR>
+        </table>
+    </FORM>
+</BODY>
+</HTML>
+<!-- End: ShowAllItems.jsp -->

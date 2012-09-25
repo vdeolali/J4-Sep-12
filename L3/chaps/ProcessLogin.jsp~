@@ -1,0 +1,10 @@
+
+<!-- Begin: ProcessLogin.jsp -->
+<HTML>
+<BODY>
+Hello, <%= request.getParameter("firstName") %>
+<%= request.getParameter("lastName") %>,
+you have reached the second page!
+</BODY>
+</HTML>
+<!-- End: ProcessLogin.jsp -->

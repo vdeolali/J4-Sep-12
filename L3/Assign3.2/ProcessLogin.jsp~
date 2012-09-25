@@ -1,0 +1,41 @@
+<!-- Begin: ProcessLogin.jsp -->
+<%@page import="java.util.*" %>
+<%
+String Uname = request.getParameter("username");
+String Passwd = request.getParameter("password");
+Map<String,String> usrpass = new HashMap<String, String>();
+Map<String,String> usrname = new HashMap<String, String>();
+usrpass.put("sferrone", "bluesky");
+usrpass.put("jsebastian", "clearwater");
+usrpass.put("kloh", "greentree");
+
+usrname.put ("sferrone", "Steve Ferrone");
+usrname.put ("jsebastian", "Jay Sebastian");
+usrname.put ("kloh", "Keng Loh");
+
+
+Set<String> usernames = usrpass.keySet();
+Iterator<String> it = usernames.iterator();
+String user;
+Boolean notFound = Boolean.FALSE;
+if (Uname != null && !Uname.trim().equals("") && Passwd !=null && !Passwd.trim().equals("")){
+while (it.hasNext()){
+      user = it.next();
+      if (user.equals(Uname)){
+	if (Passwd.equals (usrpass.get(Uname))){
+              session.setAttribute ("FULL_NAME", usrname.get(Uname));
+	      response.sendRedirect("ShowAllItems.jsp");
+	} else {
+          response.sendRedirect("Login.jsp?state=error");
+      }
+      }
+  }
+response.sendRedirect("Login.jsp?state=error");
+}else {
+response.sendRedirect("Login.jsp?state=error");
+}
+%>
+
+<!--   session.setAttribute("FIRST_NAME",fName); -->
+<!--    session.setAttribute("LAST_NAME",lName);  -->
+<!-- End: ProcessLogin.jsp -->
