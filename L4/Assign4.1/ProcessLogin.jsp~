@@ -1,0 +1,74 @@
+<!-- Begin: ProcessLogin.jsp -->
+<%@page import="java.util.*, java.sql.*" %>
+<%
+String Uname = request.getParameter("username");
+String Passwd = request.getParameter("password");
+/*
+Map<String,String> usrpass = new HashMap<String, String>();
+Map<String,String> usrname = new HashMap<String, String>();
+usrpass.put("sferrone", "bluesky");
+usrpass.put("jsebastian", "clearwater");
+usrpass.put("kloh", "greentree");
+
+usrname.put ("sferrone", "Steve Ferrone");
+usrname.put ("jsebastian", "Jay Sebastian");
+usrname.put ("kloh", "Keng Loh");
+
+
+Set<String> usernames = usrpass.keySet();
+Iterator<String> it = usernames.iterator();
+*/
+
+String username = "root";
+String password = "sesame";
+String dbURL = "jdbc:mysql://localhost:3306/orderdatabase";
+String c_id;
+Boolean notFound = Boolean.TRUE;
+
+Class.forName("com.mysql.jdbc.Driver").newInstance();
+out.println ("Connecting to DB");
+Connection connection = DriverManager.getConnection(dbURL, username, password);
+Statement statement = connection.createStatement();
+Statement statement2 = connection.createStatement();
+ResultSet usrname  = statement.executeQuery("SELECT username, password, customer_id FROM user");
+ResultSet fname=null;
+
+String FullName= "";
+while (usrname.next()){
+   out.println (usrname.getString("username"));
+   if (usrname.getString("username").equals(Uname) && usrname.getString("password").equals(Passwd)){
+       out.println ("<br>" + "Found one");
+       c_id = usrname.getString("customer_id");
+       out.println ("<br>" + c_id);
+       fname = statement2.executeQuery("SELECT first_name, last_name from customer where customer_id=" +c_id);
+
+       if( fname.next()){
+       FullName = fname.getString("first_name");
+       FullName += " ";
+       FullName += fname.getString("last_name");
+       }
+       session.setAttribute ("FULL_NAME", FullName);
+       response.sendRedirect("ShowAllItems.jsp");
+       notFound = Boolean.FALSE;
+   }
+}
+/*
+
+if (Uname != null && !Uname.trim().equals("") && Passwd !=null && !Passwd.trim().equals("")){
+    while (it.hasNext()){
+      user = it.next();
+      if (user.equals(Uname) && Passwd.equals (usrpass.get (Uname))){
+              session.setAttribute ("FULL_NAME", usrname.get(Uname));
+	      response.sendRedirect("ShowAllItems.jsp");
+              notFound = Boolean.FALSE;
+	}
+     }
+
+}
+*/
+if (notFound) response.sendRedirect("Login.jsp?state=error");
+%>
+
+<!--   session.setAttribute("FIRST_NAME",fName); -->
+<!--    session.setAttribute("LAST_NAME",lName);  -->
+<!-- End: ProcessLogin.jsp -->
